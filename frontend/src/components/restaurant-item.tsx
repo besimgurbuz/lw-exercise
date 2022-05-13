@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Link } from '@reach/router';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import HeartIcon from '../icons/heart';
 import { breakpoints, colors, mq, unit } from '../styles';
 import Thumbnail from './thumbnail';
@@ -60,6 +61,7 @@ const ItemContainer = styled.div(() => ({
 
 const OpeningLink = styled(Link)({
   textDecoration: 'none',
+  color: colors.accent,
 });
 
 const ItemTextsContainer = styled.div({

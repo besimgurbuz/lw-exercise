@@ -1,11 +1,10 @@
-import { RouteComponentProps } from '@reach/router';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
-interface IOpeningsProps extends RouteComponentProps {
-  restaurantId?: string;
-}
+interface IOpeningsProps {}
 
-const Openings = ({ restaurantId }: IOpeningsProps) => {
+const Openings = ({}: IOpeningsProps) => {
+  const { restaurantId } = useParams();
   return <h1>Openings Works! {restaurantId}</h1>;
 };
 

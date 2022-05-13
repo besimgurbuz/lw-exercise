@@ -1,18 +1,17 @@
 import styled from '@emotion/styled';
-import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 import Layout from '../components/layout';
 import RestaurantItem from '../components/restaurant-item';
 import { RESTAURANT_LIST } from '../data/userData';
 import { unit } from '../styles';
 
-interface IListProps extends RouteComponentProps {}
+interface IListProps {}
 
 const List = (_: IListProps) => {
   const restaurants = RESTAURANT_LIST;
 
   return (
-    <Layout>
+    <Layout grid fullWidth>
       <ListContainer>
         <h1>restaurants</h1>
         <ItemsContainer>
