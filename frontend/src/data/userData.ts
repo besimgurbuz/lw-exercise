@@ -1,3 +1,5 @@
+import { WeekDay } from '../models/week-day';
+
 export interface Restaurant {
   id: string;
   name: string;
@@ -5,6 +7,8 @@ export interface Restaurant {
   rating: string;
   thumbnailUrl: string;
 }
+
+export type Opening = Partial<Record<WeekDay, { start: number; end: number }>>;
 
 export const RESTAURANT_LIST: Restaurant[] = [
   {
@@ -39,3 +43,128 @@ export const RESTAURANT_LIST: Restaurant[] = [
     thumbnailUrl: '/marmaris_thumb.jpg',
   },
 ];
+
+export const OPENINGS: Record<
+  string,
+  {
+    restaurant: Restaurant;
+    plan: Opening;
+  }
+> = {
+  '1': {
+    restaurant: RESTAURANT_LIST[0],
+    plan: {
+      mon: {
+        start: 4000,
+        end: 8000,
+      },
+      tue: {
+        start: 4000,
+        end: 8000,
+      },
+      wed: {
+        start: 4000,
+        end: 8000,
+      },
+      thu: {
+        start: 4000,
+        end: 8000,
+      },
+      fri: {
+        start: 4000,
+        end: 8000,
+      },
+      sat: {
+        start: 4000,
+        end: 8000,
+      },
+    },
+  },
+  '2': {
+    restaurant: RESTAURANT_LIST[1],
+    plan: {
+      mon: {
+        start: 4000,
+        end: 8000,
+      },
+      tue: {
+        start: 4000,
+        end: 8000,
+      },
+      wed: {
+        start: 4000,
+        end: 8000,
+      },
+      thu: {
+        start: 4000,
+        end: 8000,
+      },
+      fri: {
+        start: 4000,
+        end: 8000,
+      },
+      sat: {
+        start: 4000,
+        end: 8000,
+      },
+    },
+  },
+  '3': {
+    restaurant: RESTAURANT_LIST[2],
+    plan: {
+      mon: {
+        start: 4000,
+        end: 8000,
+      },
+      tue: {
+        start: 4000,
+        end: 8000,
+      },
+      wed: {
+        start: 4000,
+        end: 8000,
+      },
+      thu: {
+        start: 4000,
+        end: 8000,
+      },
+      fri: {
+        start: 4000,
+        end: 8000,
+      },
+      sat: {
+        start: 4000,
+        end: 8000,
+      },
+    },
+  },
+  '4': {
+    restaurant: RESTAURANT_LIST[3],
+    plan: {
+      mon: {
+        start: 4000,
+        end: 8000,
+      },
+      tue: {
+        start: 4000,
+        end: 8000,
+      },
+      wed: {
+        start: 4000,
+        end: 8000,
+      },
+      thu: {
+        start: 4000,
+        end: 8000,
+      },
+      fri: {
+        start: 4000,
+        end: 8000,
+      },
+      sat: {
+        start: 4000,
+        end: 8000,
+      },
+    },
+  },
+};
