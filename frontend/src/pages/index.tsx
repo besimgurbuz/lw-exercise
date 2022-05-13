@@ -1,12 +1,14 @@
 import { Router } from '@reach/router';
-import React, { Fragment } from 'react';
+import React from 'react';
 /* Pages */
+import List from './list';
 import Openings from './openings';
 
 export default function Pages() {
   return (
-    <Router primary={false} component={Fragment}>
-      <Openings path='/' />
+    <Router>
+      <List path='/' />
+      <Openings path='/openings/:restaurantId' />
     </Router>
   );
 }

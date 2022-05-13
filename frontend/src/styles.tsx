@@ -1,10 +1,8 @@
 import { Global } from '@emotion/react';
 import React from 'react';
 
-const breakpoints = [480, 768, 992, 1200];
-export const mediaQuery = breakpoints.map(
-  (bp) => `@media (min-width: ${bp}px)`
-);
+export const breakpoints = [480, 768, 992, 1200];
+export const mq = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
 
 export const unit = 8;
 export const widths = {
@@ -14,14 +12,14 @@ export const widths = {
 };
 
 export const colors = {
-  primary: '#40514e',
-  secondary: '#2f89fc',
-  accent: '#30e3ca',
-  warn: '#feb062',
-  background: '#f5f5f5',
-  grey: '#dee1ec',
-  text: '#40514e',
-  textSecondary: '#303a52',
+  primary: '#324E7B',
+  secondary: '#86A6DF',
+  accent: '#5068A9',
+  warn: '#FACF5A',
+  background: '#F8F8F8',
+  grey: '#EAEAEA',
+  text: '#333644',
+  textSecondary: '#F5EDED',
 };
 
 const GlobalStyles = () => (
@@ -33,7 +31,7 @@ const GlobalStyles = () => (
       body: {
         margin: 0,
         padding: 0,
-        fontFamily: "'Source Sans Pro', sans-serif",
+        fontFamily: "'Inter', sans-serif",
         backgroundColor: colors.background,
         color: colors.text,
       },
@@ -49,6 +47,9 @@ const GlobalStyles = () => (
         margin: 0,
         fontWeight: 600,
       },
+      p: {
+        margin: 0,
+      },
       h1: {
         fontSize: 40,
         lineHeight: 1,
@@ -58,6 +59,9 @@ const GlobalStyles = () => (
       },
       h3: {
         fontSize: 30,
+      },
+      h4: {
+        fontSize: 20,
       },
       h5: {
         fontSize: 16,

@@ -1,10 +1,12 @@
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 
-interface IOpeningsProps extends RouteComponentProps {}
+interface IOpeningsProps extends RouteComponentProps {
+  restaurantId?: string;
+}
 
-const Openings = (_: IOpeningsProps) => {
-  return <h1>Openings Works!</h1>;
+const Openings = ({ restaurantId }: IOpeningsProps) => {
+  return <h1>Openings Works! {restaurantId}</h1>;
 };
 
 export default Openings;
