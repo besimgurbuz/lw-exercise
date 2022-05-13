@@ -8,7 +8,9 @@ export interface Restaurant {
   thumbnailUrl: string;
 }
 
-export type Opening = Partial<Record<WeekDay, { start: number; end: number }>>;
+export type DailyOpening = { start: number; end: number };
+
+export type WeeklyOpening = Partial<Record<WeekDay, DailyOpening>>;
 
 export const RESTAURANT_LIST: Restaurant[] = [
   {
@@ -48,35 +50,39 @@ export const OPENINGS: Record<
   string,
   {
     restaurant: Restaurant;
-    plan: Opening;
+    plan: WeeklyOpening;
   }
 > = {
   '1': {
     restaurant: RESTAURANT_LIST[0],
     plan: {
       mon: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
       },
       tue: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
       },
       wed: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
       },
       thu: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
       },
       fri: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
       },
       sat: {
-        start: 4000,
-        end: 8000,
+        start: 39600,
+        end: 82800,
+      },
+      sun: {
+        start: 39600,
+        end: 82800,
       },
     },
   },
@@ -84,28 +90,28 @@ export const OPENINGS: Record<
     restaurant: RESTAURANT_LIST[1],
     plan: {
       mon: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 76680,
       },
       tue: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 76680,
       },
       wed: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 76680,
       },
       thu: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 76680,
       },
       fri: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 79200,
       },
       sat: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 79200,
       },
     },
   },
@@ -113,28 +119,32 @@ export const OPENINGS: Record<
     restaurant: RESTAURANT_LIST[2],
     plan: {
       mon: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 75600,
       },
       tue: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 75600,
       },
       wed: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 75600,
       },
       thu: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 75600,
       },
       fri: {
-        start: 4000,
-        end: 8000,
+        start: 54000,
+        end: 79200,
       },
       sat: {
-        start: 4000,
-        end: 8000,
+        start: 36000,
+        end: 79200,
+      },
+      sun: {
+        start: 36000,
+        end: 72000,
       },
     },
   },
@@ -142,28 +152,32 @@ export const OPENINGS: Record<
     restaurant: RESTAURANT_LIST[3],
     plan: {
       mon: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
       },
       tue: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
       },
       wed: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
       },
       thu: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
       },
       fri: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
       },
       sat: {
-        start: 4000,
-        end: 8000,
+        start: 43200,
+        end: 82800,
+      },
+      sun: {
+        start: 43200,
+        end: 82800,
       },
     },
   },

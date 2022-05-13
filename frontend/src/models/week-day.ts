@@ -10,8 +10,10 @@ export const WEEK_DAYS: WeekDay[] = [
   'sat',
 ];
 
-export type WeekDayWithDate = {
+export type DailyOpeningDetail = {
   day: WeekDay;
   date: number;
   isToday?: boolean;
+  startHour?: number;
+  endHour?: number;
 };

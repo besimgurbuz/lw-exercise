@@ -17,7 +17,7 @@ const Openings = ({}: IOpeningsProps) => {
         <OpeningsHeader>
           <h3>openings of {restaurant.name}</h3>
         </OpeningsHeader>
-        <Calendar />
+        <Calendar plan={plan} />
       </OpeningsContainer>
     </Layout>
   );

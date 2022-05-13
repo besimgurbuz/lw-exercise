@@ -14,6 +14,7 @@ const Layout = ({ fullWidth, children, grid }: ILayoutProps) => {
       <PageContainer fullWidth={fullWidth} grid={grid}>
         {children}
       </PageContainer>
+      <Signature>created with love by Besim Gurbuz</Signature>
     </>
   );
 };
@@ -33,5 +34,10 @@ const PageContainer = styled.div(
     paddingTop: unit * 15,
   })
 );
+
+const Signature = styled.p({
+  alignSelf: 'center',
+  paddingBottom: '2px',
+});
 
 export default Layout;

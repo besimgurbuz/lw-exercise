@@ -1,12 +1,19 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
+import { DailyOpening, WeeklyOpening } from '../data/userData';
 import { HOUR_TEXTS } from '../models/hour';
-import { WeekDayWithDate, WEEK_DAYS } from '../models/week-day';
+import { DailyOpeningDetail, WEEK_DAYS } from '../models/week-day';
 import { unit } from '../styles';
 import DayColumn from './day-column';
 
-const Calendar = () => {
-  let [weekDaysWithDate, setWeekDaysWithDate] = useState<WeekDayWithDate[]>([]);
+interface ICalendarProps {
+  plan: WeeklyOpening;
+}
+
+const Calendar = ({ plan }: ICalendarProps) => {
+  let [weekDaysWithDate, setWeekDaysWithDate] = useState<DailyOpeningDetail[]>(
+    []
+  );
   const hoursText = HOUR_TEXTS;
 
   useEffect(() => {
@@ -16,10 +23,16 @@ const Calendar = () => {
 
     if (!weekDaysWithDate.length) {
       setWeekDaysWithDate(
-        WEEK_DAYS.map<WeekDayWithDate>((day, index) => ({
+        WEEK_DAYS.map<DailyOpeningDetail>((day, index) => ({
           date: dateOfToday - (dayIndexOfToday - index),
           day,
           isToday: dayIndexOfToday === index,
+          startHour: plan[day]?.start
+            ? (plan[day] as DailyOpening).start / 3600
+            : undefined,
+          endHour: plan[day]?.end
+            ? (plan[day] as DailyOpening).end / 3600
+            : undefined,
         }))
       );
     }
@@ -34,16 +47,20 @@ const Calendar = () => {
           </HourLabel>
         ))}
       </HoursContainer>
-      {weekDaysWithDate.map(({ date, day, isToday }, index) => (
-        <DayColumn
-          key={index}
-          day={day}
-          date={date}
-          isToday={isToday}
-          head={index === 0}
-          tail={index === weekDaysWithDate.length - 1}
-        />
-      ))}
+      {weekDaysWithDate.map(
+        ({ date, day, isToday, startHour, endHour }, index) => (
+          <DayColumn
+            key={index}
+            day={day}
+            date={date}
+            isToday={isToday}
+            startHour={startHour}
+            endHour={endHour}
+            head={index === 0}
+            tail={index === weekDaysWithDate.length - 1}
+          />
+        )
+      )}
     </CalendarContainer>
   );
 };

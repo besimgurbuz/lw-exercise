@@ -7,11 +7,21 @@ interface IDayColumnProps {
   day: string;
   date: number;
   isToday?: boolean;
+  startHour?: number;
+  endHour?: number;
   head?: boolean;
   tail?: boolean;
 }
 
-const DayColumn = ({ day, date, isToday, head, tail }: IDayColumnProps) => {
+const DayColumn = ({
+  day,
+  date,
+  isToday,
+  startHour,
+  endHour,
+  head,
+  tail,
+}: IDayColumnProps) => {
   let [borderRadius, setBorderRadius] = useState<number[]>([]);
   const hours = HOUR_VALUES;
 
@@ -36,8 +46,13 @@ const DayColumn = ({ day, date, isToday, head, tail }: IDayColumnProps) => {
         head={head || false}
         tail={tail || false}
       >
-        {hours.map((hour) => (
-          <HoursLine top={hour * 20} />
+        {startHour && endHour ? (
+          <OpenRange startHour={startHour} endHour={endHour} />
+        ) : (
+          ''
+        )}
+        {hours.map((hour, index) => (
+          <HoursLine key={index} top={hour * 20} />
         ))}
       </DayColumnBody>
     </DayColumnContainer>
@@ -92,5 +107,16 @@ const HoursLine = styled.div(({ top }: { top: number }) => ({
     backgroundColor: colors.secondary,
   },
 }));
+
+const OpenRange = styled.div(
+  ({ startHour, endHour }: { startHour: number; endHour: number }) => ({
+    position: 'absolute',
+    background: 'rgba(134, 166, 223, 0.5)',
+    width: '100%',
+    top: `${startHour * 20}px`,
+    height: `${endHour * 20 - startHour * 20}px`,
+    zIndex: '9',
+  })
+);
 
 export default DayColumn;
