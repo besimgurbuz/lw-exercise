@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
-import { DailyOpening, WeeklyOpening } from '../data/userData';
 import { HOUR_TEXTS } from '../models/hour';
+import { DailyOpening, WeeklyOpening } from '../models/opening';
 import { DailyOpeningDetail, WEEK_DAYS } from '../models/week-day';
 import { unit } from '../styles';
 import DayColumn from './day-column';
@@ -42,7 +42,7 @@ const Calendar = ({ plan }: ICalendarProps) => {
     <CalendarContainer>
       <HoursContainer>
         {hoursText.map((hour, i) => (
-          <HourLabel key={i} positionIndex={i + 1}>
+          <HourLabel key={i} positionIndex={i + 1} calendarPosition='start'>
             {hour}
           </HourLabel>
         ))}
@@ -61,6 +61,13 @@ const Calendar = ({ plan }: ICalendarProps) => {
           />
         )
       )}
+      <HoursContainer>
+        {hoursText.map((hour, i) => (
+          <HourLabel key={i} positionIndex={i + 1} calendarPosition='end'>
+            {hour}
+          </HourLabel>
+        ))}
+      </HoursContainer>
     </CalendarContainer>
   );
 };
@@ -73,16 +80,23 @@ const CalendarContainer = styled.div({
 const HoursContainer = styled.div({
   width: `${unit * 5}px`,
   height: '480px',
-  textAlign: 'right',
   alignSelf: 'flex-end',
   position: 'relative',
 });
 
-const HourLabel = styled.h4(({ positionIndex }: { positionIndex: number }) => ({
-  fontSize: '10px',
-  position: 'absolute',
-  top: `${positionIndex * 20 - 5}px`,
-  right: `${unit}px`,
-}));
+const HourLabel = styled.h4(
+  ({
+    positionIndex,
+    calendarPosition,
+  }: {
+    positionIndex: number;
+    calendarPosition: 'start' | 'end';
+  }) => ({
+    fontSize: '10px',
+    position: 'absolute',
+    top: `${positionIndex * 20 - 5}px`,
+    [calendarPosition === 'start' ? 'right' : 'left']: `${unit}px`,
+  })
+);
 
 export default Calendar;

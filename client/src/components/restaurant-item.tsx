@@ -27,7 +27,7 @@ const RestaurantItem = ({
           <h4>{name}</h4>
           <p>{address}</p>
           <RatingContainer>
-            <HeartIcon color={colors.accent} />
+            <HeartIcon color={colors.accent} width={18} height={18} />
             {rating}
           </RatingContainer>
         </ItemTextsContainer>
@@ -61,13 +61,16 @@ const ItemContainer = styled.div(() => ({
 
 const OpeningLink = styled(Link)({
   textDecoration: 'none',
-  color: colors.accent,
+  color: colors.text,
 });
 
 const ItemTextsContainer = styled.div({
   display: 'flex',
   flexDirection: 'column',
   gap: `${unit}px`,
+  h4: {
+    color: colors.accent,
+  },
 });
 
 const RatingContainer = styled.div({
@@ -75,6 +78,7 @@ const RatingContainer = styled.div({
   marginTop: 'auto',
   color: colors.accent,
   alignItems: 'center',
+  fontSize: '15px',
 });
 
 const ThumbnailContainer = styled.div({

@@ -1,16 +1,5 @@
-import { WeekDay } from '../models/week-day';
-
-export interface Restaurant {
-  id: string;
-  name: string;
-  address: string;
-  rating: string;
-  thumbnailUrl: string;
-}
-
-export type DailyOpening = { start: number; end: number };
-
-export type WeeklyOpening = Partial<Record<WeekDay, DailyOpening>>;
+import { WeeklyOpening } from '../models/opening';
+import { Restaurant } from '../models/restaurant';
 
 export const RESTAURANT_LIST: Restaurant[] = [
   {
