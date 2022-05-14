@@ -10,7 +10,7 @@ interface IRestaurantItemProps {
   name: string;
   address: string;
   rating: string;
-  thumbnailUrl: string;
+  thumbnail_url: string;
 }
 
 const RestaurantItem = ({
@@ -18,7 +18,7 @@ const RestaurantItem = ({
   name,
   address,
   rating,
-  thumbnailUrl,
+  thumbnail_url: thumbnailUrl,
 }: IRestaurantItemProps) => {
   return (
     <OpeningLink to={`/openings/${id}`}>
