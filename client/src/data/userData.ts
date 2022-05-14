@@ -44,6 +44,14 @@ export const RESTAURANT_LIST: Restaurant[] = [
     rating: '4.7',
     thumbnailUrl: '/marmaris_thumb.jpg',
   },
+  {
+    id: '5',
+    name: 'VeroGusto',
+    address:
+      '12 Norfolk Row, Sheffield City Centre, Sheffield S1 2PA, United Kingdom',
+    rating: '4.7',
+    thumbnailUrl: '/gusto_thumb.jpg',
+  },
 ];
 
 export const OPENINGS: Record<
@@ -177,6 +185,39 @@ export const OPENINGS: Record<
       },
       sun: {
         start: 43200,
+        end: 82800,
+      },
+    },
+  },
+  '5': {
+    restaurant: RESTAURANT_LIST[4],
+    plan: {
+      mon: {
+        start: 3600,
+        end: 82800,
+      },
+      tue: {
+        start: 3600,
+        end: 82800,
+      },
+      wed: {
+        start: 43200,
+        end: 82800,
+      },
+      thu: {
+        start: 3600,
+        end: 82800,
+      },
+      fri: {
+        start: 3600,
+        end: 82800,
+      },
+      sat: {
+        start: 3600,
+        end: 82800,
+      },
+      sun: {
+        start: 3600,
         end: 82800,
       },
     },

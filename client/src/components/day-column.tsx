@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { HOUR_VALUES } from '../models/hour';
 import { colors, unit } from '../styles';
+import TodayLine from './today-line';
 
 interface IDayColumnProps {
   day: string;
@@ -23,6 +24,10 @@ const DayColumn = ({
   tail,
 }: IDayColumnProps) => {
   let [borderRadius, setBorderRadius] = useState<number[]>([]);
+  let [currentHour, setCurrentHour] = useState(
+    new Date().getHours() + new Date().getMinutes() / 24
+  );
+  let hoursChangedInterval: number;
   const hours = HOUR_VALUES;
 
   useEffect(() => {
@@ -32,6 +37,13 @@ const DayColumn = ({
       } else if (tail) {
         setBorderRadius([0, 5, 5, 0]);
       }
+    }
+    if (!hoursChangedInterval) {
+      hoursChangedInterval = setInterval(() => {
+        const now = new Date();
+        setCurrentHour(now.getHours() + now.getMinutes() / 24);
+        console.log(currentHour);
+      }, 1000 * 60 * 5);
     }
   });
 
@@ -46,11 +58,10 @@ const DayColumn = ({
         head={head || false}
         tail={tail || false}
       >
-        {startHour && endHour ? (
+        {startHour && endHour && (
           <OpenRange startHour={startHour} endHour={endHour} />
-        ) : (
-          ''
         )}
+        {isToday && <TodayLine hour={currentHour} />}
         {hours.map((hour, index) => (
           <HoursLine key={index} top={hour * 20} />
         ))}
@@ -115,7 +126,7 @@ const OpenRange = styled.div(
     width: '100%',
     top: `${startHour * 20}px`,
     height: `${endHour * 20 - startHour * 20}px`,
-    zIndex: '9',
+    zIndex: 9,
   })
 );
 
