@@ -3,5 +3,5 @@ export interface Restaurant {
   name: string;
   address: string;
   rating: string;
-  thumbnailUrl: string;
+  thumbnail_url: string;
 }
