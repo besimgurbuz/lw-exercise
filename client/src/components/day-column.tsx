@@ -25,7 +25,7 @@ const DayColumn = ({
 }: IDayColumnProps) => {
   let [borderRadius, setBorderRadius] = useState<number[]>([]);
   let [currentHour, setCurrentHour] = useState(
-    new Date().getHours() + new Date().getMinutes() / 24
+    new Date().getHours() + new Date().getMinutes() / 60
   );
   let hoursChangedInterval: number;
   const hours = HOUR_VALUES;
@@ -41,7 +41,7 @@ const DayColumn = ({
     if (!hoursChangedInterval) {
       hoursChangedInterval = setInterval(() => {
         const now = new Date();
-        setCurrentHour(now.getHours() + now.getMinutes() / 24);
+        setCurrentHour(now.getHours() + now.getMinutes() / 60);
         console.log(currentHour);
       }, 1000 * 60 * 5);
     }
