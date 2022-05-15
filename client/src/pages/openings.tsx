@@ -72,7 +72,7 @@ const Openings = ({}: IOpeningsProps) => {
         {openingDetail?.openings && (
           <>
             <OpeningsHeader>
-              <h3>openings of {openingDetail?.restaurant?.name}</h3>
+              <h3>openings of {openingDetail?.restaurant_name}</h3>
               <OpenStatus isOpen={openStatus}>
                 {openStatus ? 'open' : 'closed'}
               </OpenStatus>

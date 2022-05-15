@@ -39,7 +39,7 @@ const TodayLineContainer = styled.div(({ hour }: { hour: number }) => ({
   display: 'flex',
   alignItems: 'center',
   position: 'absolute',
-  top: `${hour * 20}px`,
+  top: `${hour * 20 - 3}px`,
   left: '-3px',
   width: 'calc(100% + 3px)',
   zIndex: 10,
