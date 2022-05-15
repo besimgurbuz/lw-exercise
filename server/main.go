@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -8,11 +9,17 @@ import (
 	"besimgurbuz.dev/lw-practice/db"
 	"github.com/gin-gonic/gin"
 	"github.com/go-pg/pg"
+	"github.com/joho/godotenv"
 )
 
 var dbConn *pg.DB
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("error loading .env file")
+	}
+
 	dbConn = db.Connect()
 	db.CreateTablesIfNotExists(dbConn)
 	db.InsertDefaultValues(dbConn)
@@ -31,10 +38,7 @@ func main() {
 /* MIDDLEWARES */
 func cors() gin.HandlerFunc {
 	allowedOrigin := os.Getenv("ALLOWED_ORIGIN")
-
-	if allowedOrigin == "" {
-		allowedOrigin = "*"
-	}
+	log.Printf("allowed origin: %v", allowedOrigin)
 
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", allowedOrigin)

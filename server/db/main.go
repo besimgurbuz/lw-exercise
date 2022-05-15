@@ -2,6 +2,7 @@ package db
 
 import (
 	"log"
+	"os"
 
 	pg "github.com/go-pg/pg"
 )
@@ -11,9 +12,9 @@ import (
 */
 func Connect() *pg.DB {
 	opts := &pg.Options{
-		User:     "postgres",
-		Password: "password",
-		Addr:     "localhost:49153",
+		User:     os.Getenv("DB_USERNAME"),
+		Password: os.Getenv("DB_PASSWORD"),
+		Addr:     os.Getenv("DB_ADDRESS"),
 	}
 	var db = pg.Connect(opts)
 
