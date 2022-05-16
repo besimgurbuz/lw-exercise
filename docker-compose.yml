@@ -12,7 +12,6 @@ services:
       - data:/var/lib/postgresql
   server:
     image: lwserver
-    platform: linux/x86_64
     build: server
     environment:
       - DB_USERNAME=postgres
@@ -22,3 +21,5 @@ services:
   client:
     image: lwclient
     build: client
+    ports:
+      - "3000:80"
