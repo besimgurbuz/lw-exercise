@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"besimgurbuz.dev/lw-practice/db"
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,8 @@ import (
 var dbConn *pg.DB
 
 func main() {
+	// wait for db to start
+	time.Sleep(time.Second * 5)
 	err := godotenv.Load()
 	if err != nil {
 		log.Println("error loading .env file")
@@ -32,7 +35,7 @@ func main() {
 	router.POST("/openings", postOpenings)
 	router.GET("/openings/:id", getRestaurantOpeningsById)
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
 
 /* MIDDLEWARES */
